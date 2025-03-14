@@ -1,6 +1,48 @@
 # Deep-Learning
 
-. Why do deep networks generalize better than shallow networks?
+### What are the main components of a neural network?
+Inout Layer
+Hidden Layer
+Output Layer
+Weights & biases
+Activation function
+
+### What is the purpose of an activation function
+It introduces non linearity to learn complex patterns
+Sigmoid: Used for probabilities, but suffers from vanishing gradient
+TanH: Used in hidden layers, zero-centered
+Relu
+Leaky Relu
+Softmax: Used in multi-class classification
+
+### Why do we prefer ReLU over Sigmoid and Tanh?
+To avoid vanishing gradient problem
+
+### What is backpropagation?
+Backpropagation is used to train a neural network by minimizing the loss function. During forward propagation, data flows from the input to the output layer, making predictions using initial random weights and biases. The loss is then calculated by comparing predictions with actual values. Using the chain rule, the gradient of the loss is computed, and the error propagates backward layer by layer. Weights are updated using gradient descent to minimize the error. This process repeats until the model converges
+
+### What is the vanishing gradient problem?
+The vanishing gradient problem occurs when gradients become too small during backpropagation, especially in deep networks. This happens because activation functions like Sigmoid or Tanh squash values between a limited range, causing gradients to shrink as they pass through multiple layers. As a result, earlier layers learn very slowly, making training inefficient.
+
+Solution: use RelU or Leaky Relu
+Batch normalization
+Use Residual Connections (Skip Connections) in deep networks.
+### Optimization Techniques
+### What is gradient descent?
+Gradient Descent is an optimization algorithm used to minimize the loss function. It updated the weights in the direction of negative gradient
+w new=w old−η ∂w/∂L
+​, where 𝜂 η is the learning rate.
+Types:
+Batch Gradient Descent: Uses the entire dataset for each update.
+Stochastic Gradient Descent (SGD): Updates weights for each sample (noisy but faster).
+Mini-Batch Gradient Descent: Uses a small batch (most commonly used).
+
+### What are the differences between Adam, RMSProp, and SGD?
+
+### What is batch normalization?
+Batch Normalization normalizes inputs to each layer, ensuring stable learning.
+
+# Q1 Why do deep networks generalize better than shallow networks?
 ✔ Answer:
 Deep networks learn hierarchical features—low-level features in early layers and high-level abstractions in later layers. This allows them to capture complex patterns that shallow networks cannot, leading to better generalization.
 
