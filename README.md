@@ -1,4 +1,4 @@
-# Deep-Learning
+![image](https://github.com/user-attachments/assets/90229840-f62e-4e85-b6e8-deff6480a30d)# Deep-Learning
 
 ### What are the main components of a neural network?
 Inout Layer
@@ -42,12 +42,10 @@ Mini-Batch Gradient Descent: Uses a small batch (most commonly used).
 ### What is batch normalization?
 Batch Normalization normalizes inputs to each layer, ensuring stable learning.
 
-# Q1 Why do deep networks generalize better than shallow networks?
-✔ Answer:
+### Why do deep networks generalize better than shallow networks?
 Deep networks learn hierarchical features—low-level features in early layers and high-level abstractions in later layers. This allows them to capture complex patterns that shallow networks cannot, leading to better generalization.
 
-Q3. Why does Batch Normalization improve training stability?
-✔ Answer:
+### Why does Batch Normalization improve training stability?
 
 Reduces internal covariate shift (normalizes feature distributions).
 Acts as a form of regularization (reducing dependence on dropout).
@@ -55,8 +53,7 @@ Allows for larger learning rates, speeding up convergence.
 🚀 Follow-up: Can BN be applied to small batch sizes?
 ✔ Use Group Normalization when batch size is small.
 
-Q4. What are the pros and cons of using Adam vs. SGD?
-✔ Answer:
+### What are the pros and cons of using Adam vs. SGD?
 
 Optimizer	Pros	Cons
 Adam	Fast convergence, works well for sparse data	May not generalize well, sensitive to hyperparameters
@@ -81,6 +78,7 @@ Monitor data drift using tools like EvidentlyAI.
 Use active learning to retrain models on fresh data.
 Implement shadow deployments before rolling out updates.
 Compare feature distributions over time to detect changes.
+
 4️⃣ Explainability & Interpretability in Deep Learning
 Q7. How do you interpret a deep learning model's predictions?
 ✔ Answer:
@@ -89,6 +87,7 @@ SHAP (Shapley Additive Explanations) → Feature importance.
 LIME (Local Interpretable Model-agnostic Explanations) → Local explanations.
 Grad-CAM → For CNN-based models in computer vision.
 Integrated Gradients → For NLP and structured data.
+
 🚀 Follow-up: When would you use Grad-CAM over SHAP?
 ✔ Grad-CAM is for CNNs and image-based models, while SHAP is more general.
 
@@ -103,23 +102,114 @@ Use mixed-precision training for speedup.
 🚀 Follow-up: Why would you use learning rate schedulers like cosine annealing?
 ✔ To avoid sharp minima and improve convergence.
 
-6️⃣ Advanced Deep Learning Topics
-Q9. What is the role of Self-Attention in Transformer models?
-✔ Answer:
+## What is a Recurrent Neural Network (RNN)?
+It is used for processing Sequential data, RNNs maintain a hidden state that acts as memory. 
+Inputs : A sequence of data points is fed into the network.
+Hidden States : The network maintains memory across all layers.
+Output : The model produces an output at layers.
+Weight Sharing: The same weights are used at each layer, making it effective for sequential tasks.
 
+### What is the vanishing gradient problem in RNNs? How do you solve it?
+
+During backpropagation, gradients become very small (vanish) as they move back through time.
+This prevents RNNs from learning long-term dependencies.
+
+Use LSTMs/GRUs: These architectures have gates that help retain long-term dependencies.
+Use ReLU instead of tanh/sigmoid: ReLU activation mitigates vanishing gradients.
+Gradient Clipping: Limits the gradient values to prevent vanishing/exploding.
+Batch Normalization: Helps stabilize gradient updates.
+
+### What are the different types of RNN architectures?
+Many-to-One: One output per entire sequence (e.g., sentiment analysis).
+One-to-Many: One input, multiple outputs (e.g., image captioning).
+Many-to-Many: Multiple inputs and outputs (e.g., machine translation, video classification).
+Bidirectional RNN (Bi-RNN): Uses both past and future information (e.g., Named Entity Recognition).
+LSTMs & GRUs: Advanced RNNs that solve vanishing gradient issues.
+
+### What is an LSTM? How does it solve RNN limitations?
+It has three gates to regulate information flow:
+Forget Gate – Decides what to forget from past memory.
+Input Gate – Decides what new information to store.
+Output Gate – Decides what part of memory to output.
+
+### What is a GRU, and how is it different from LSTM?
+It has only two:
+Reset Gate: Decides how much past information to forget.
+Update Gate: Controls how much new memory to store.
+
+### What is the Transformer model? How does it work?
+The Transformer architecture is a deep learning model that processes input sequences in parallel, unlike RNNs. It uses positional encoding to retain order information and self-attention mechanisms to weigh the importance of different words in a sequence. The model consists of multiple encoder-decoder layers and a feed-forward network to learn complex dependencies efficiently.
+Parallel Processing – Unlike RNNs, Transformers do not rely on sequential data processing, making them faster.
+Self-Attention Mechanism – Computes relationships between words in a sequence to understand context.
+Multi-Head Attention – Uses multiple attention mechanisms to capture different contextual features.
+Position Encoding – Since Transformers don’t have a fixed sequence order like RNNs, they use positional embeddings.
+Feedforward Networks – Fully connected layers process the transformed representations.
+
+### How does the self-attention mechanism work in Transformers?
+Query, Key, and Value (Q, K, V) Matrices
+Each input word is transformed into three vectors (Query, Key, and Value) using learned weight matrices.
+Compute Attention Scores
+The dot product between Query and Key vectors determines the relevance of each word.
+This is divided by 𝑑𝑘(scaling factor) to stabilize gradients. ​
+Apply Softmax: Converts attention scores into probabilities.
+Multiply by Value (V) Matrix: Generates the new word representation.
+\[
+\text{Attention}(Q, K, V) = \text{Softmax} \left( \frac{QK^T}{\sqrt{d_k}} \right) V
+\]
+
+### What is the role of Self-Attention in Transformer models?
 Allows models to focus on relevant parts of the input sequence.
 Eliminates the need for recurrence (faster than RNNs).
 Used in BERT, GPT, ViTs for NLP and vision tasks.
 🚀 Follow-up: Why does Transformer scaling lead to better performance?
 ✔ Larger models generalize better with sufficient data.
 
-Q10. What is contrastive learning, and where is it used?
-✔ Answer:
+### Difference Between Self-Attention and Multi-Head Attention
+Self-Attention allows a model to focus on different words in a sentence while processing each word.
+📌 It helps in capturing relationships between words, even if they are far apart in a sequence.
 
+👉 Steps in Self-Attention:
+
+Convert Input into Query (Q), Key (K), and Value (V) Matrices.
+Compute Attention Scores:
+Take the dot product of Query (Q) and Key (K).
+Divide by 𝑑𝑘 (scaling factor) to stabilize gradients.
+Apply Softmax to get attention weights.
+Multiply with Value (V) to get the final output.
+
+Multi-Head Attention (MHA) applies multiple self-attention mechanisms in parallel.
+📌 Each attention head learns different types of relationships (e.g., syntax, meaning, long-term dependencies).
+👉 Steps in Multi-Head Attention:
+Create multiple sets of Query (Q), Key (K), and Value (V) matrices with different learned weights.
+Apply self-attention to each set independently.
+Concatenate outputs of all heads.
+Pass the result through a linear transformation.
+
+### What is BERT and how does it work?
+Answer:Encoder-only
+📌 BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained Transformer model developed by Google.
+📌 Unlike traditional Transformers, BERT uses bidirectional attention, meaning it looks at both left and right context.
+👉 Key Features:
+Masked Language Model (MLM) – Some words in a sentence are randomly masked, and BERT learns to predict them.
+Next Sentence Prediction (NSP) – Determines whether two sentences appear sequentially.
+
+### What is GPT ?
+GPT (Generative Pre-trained Transformer) is a decoder-only transformer model that generates text using next-word prediction. It is autoregressive, meaning it predicts each word based on previously generated words. 
+
+### How do you fine-tune a Transformer model?
+Choose a Pre-trained Model – Load models like BERT, GPT, or T5 from Hugging Face.
+Prepare the Dataset – Tokenize input using Tokenizer.
+Modify Model Layers – Add task-specific layers (classification, regression, QA).
+Use a Suitable Loss Function – Cross-entropy for classification.
+Train with GPU Optimization – Use AdamW optimizer and learning rate schedulin
+
+### What is contrastive learning, and where is it used?
 Self-supervised learning technique (e.g., SimCLR, MoCo).
 Learns representations by maximizing similarity between positive pairs and minimizing similarity between negative pairs.
 Used in unsupervised feature learning (e.g., vision and NLP).
-🚀 Follow-up: How does contrastive learning compare to traditional supervised learning?
+
+### Follow-up: How does contrastive learning compare to traditional supervised learning?
+Contrastive learning learns representations by bringing similar data points closer and pushing dissimilar ones apart, often without explicit labels. In contrast, traditional supervised learning relies on labeled data to minimize classification error.
 
 7️⃣ Case Study Questions
 🔹 Q11. You are working on an autonomous vehicle system. How would you improve object detection accuracy?
@@ -140,15 +230,6 @@ Use XGBoost on top of deep embeddings for tabular fraud detection.
 🚀 Follow-up: How do you prevent adversarial attacks in fraud detection models?
 ✔ Use adversarial training and robust feature engineering.
 
-8️⃣ Deep Learning in NLP & Vision
-Q13. What is the difference between BERT and GPT models?
-✔ Answer:
-
-Model	Architecture	Training Objective	Use Case
-BERT	Bidirectional	Masked Language Model (MLM)	Sentence classification, Q&A
-GPT	Unidirectional	Causal Language Model (CLM)	Text generation
-🚀 Follow-up: Why is GPT better for text generation?
-✔ GPT is trained in a causal way, making it better at predicting the next word.
 
 Q14. What are Vision Transformers (ViTs), and how do they compare to CNNs?
 ✔ Answer:
@@ -157,3 +238,17 @@ ViTs divide images into patches and use self-attention instead of convolution.
 Better at long-range dependencies than CNNs.
 Requires more data than CNNs to generalize well.
 🚀 Follow-up: How would you fine-tune a ViT model for medical image classification?
+
+## How will I deploy my model?
+✅ Receives user input (natural language query)
+✅ Calls OpenAI API to generate SQL queries
+✅ Executes SQL queries on a database
+✅ Returns results to the user
+
+
+Create a FastAPI Server for Deployment
+You can use FastAPI to serve the chatbot as an API.
+
+✔ Reduce latency with caching, async queries, and optimized SQL
+✔ Increase throughput with Nginx, Gunicorn, and Kubernetes
+✔ Ensure scalability with Airflow-managed tasks
