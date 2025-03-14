@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/90229840-f62e-4e85-b6e8-deff6480a30d)# Deep-Learning
+# Deep-Learning
 
 ### What are the main components of a neural network?
 Inout Layer
@@ -108,7 +108,7 @@ Inputs : A sequence of data points is fed into the network.
 Hidden States : The network maintains memory across all layers.
 Output : The model produces an output at layers.
 Weight Sharing: The same weights are used at each layer, making it effective for sequential tasks.
-
+![image](https://github.com/user-attachments/assets/90229840-f62e-4e85-b6e8-deff6480a30d)
 ### What is the vanishing gradient problem in RNNs? How do you solve it?
 
 During backpropagation, gradients become very small (vanish) as they move back through time.
