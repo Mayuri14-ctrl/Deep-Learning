@@ -239,6 +239,42 @@ Better at long-range dependencies than CNNs.
 Requires more data than CNNs to generalize well.
 🚀 Follow-up: How would you fine-tune a ViT model for medical image classification?
 
+Q15. What is embedding?
+An embedding is a way to represent high-dimensional data (like words, images, or categorical variables) in a lower-dimensional continuous vector space. It helps capture relationships and similarities between data points more efficiently.
+Why Use Embeddings?
+Reduce dimensionality while preserving meaningful relationships.
+Improve computational efficiency.
+Capture semantic meaning (e.g., similar words have similar vector representations in NLP).
+
+Q16. Examples of Embeddings:
+1. Word Embeddings (NLP)
+In Natural Language Processing (NLP), embeddings convert words into numerical vectors. Examples:
+Word2Vec (Google)
+GloVe (Stanford)
+FastText (Facebook)
+Transformer-based embeddings (BERT, GPT, LLaMA)
+
+2. Image Embeddings (Computer Vision)
+Deep learning models (like CNNs) extract features from images and represent them as vectors.
+Example: A face recognition system converts images of faces into embeddings and compares them for similarity.
+
+3. Categorical Embeddings
+In structured data, categorical variables (like "city" or "product type") are converted into numerical embeddings.
+
+Q17 What is sentence embedding?
+A sentence embedding is a numerical vector representation of an entire sentence. It captures the meaning of the sentence in a high-dimensional space, allowing models to understand semantic relationships between sentences.
+1. Sentence-BERT (SBERT)
+Fine-tuned BERT model to generate sentence-level embeddings.
+Uses cosine similarity for comparing sentence meanings.
+2.Universal Sentence Encoder (USE)
+Developed by Google, optimized for semantic similarity and search.
+Produces 512-dimensional embeddings.
+3.OpenAI’s CLIP (for multimodal tasks)
+Maps text and images into the same embedding space.
+4. FastText and Doc2Vec
+
+Older approaches, but still used in some NLP tasks.
+
 ## How will I deploy my model?
 ✅ Receives user input (natural language query)
 ✅ Calls OpenAI API to generate SQL queries
