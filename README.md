@@ -4,19 +4,25 @@
 It is a densely packed network of neurons where input is passed through input layer and hidden layer to predict outcome.
 Weights and biases gets updated using backpropogation to minimize the loss function
 
-Input Layer
-Hidden Layer
-Output Layer
-Weights & biases
-Activation function
+- Input Layer
+-Hidden Layer
+-Output Layer
+-Weights & biases
+-Activation function
+
+### What is the difference between a perceptron and a multilayer perceptron (MLP)?
+A perceptron is single layer (input -> output). It is used for Linear classification as it can only learn linear separable problems
+Multi layer perceptron consists of multiple perceptron in layers with ability to learn linear patterns
 
 ### What is the purpose of an activation function
 It introduces non linearity to learn complex patterns
 Sigmoid: Used for probabilities, but suffers from vanishing gradient
+https://www.researchgate.net/publication/350103066/figure/fig1/AS:1002064838684673@1615922283491/Sigmoid-graph-Source.png
 TanH: Used in hidden layers, zero-centered
 Relu
 Leaky Relu
 Softmax: Used in multi-class classification
+
 
 ### Why do we prefer ReLU over Sigmoid and Tanh?
 To avoid vanishing gradient problem
@@ -25,7 +31,7 @@ To avoid vanishing gradient problem
 Backpropagation is used to train a neural network by minimizing the loss function. During forward propagation, data flows from the input to the output layer, making predictions using initial random weights and biases. The loss is then calculated by comparing predictions with actual values. Using the chain rule, the gradient of the loss is computed, and the error propagates backward layer by layer. Weights are updated using gradient descent to minimize the error. This process repeats until the model converges
 
 ### What is the vanishing gradient problem?
-The vanishing gradient problem occurs when gradients become too small during backpropagation, especially in deep networks. This happens because activation functions like Sigmoid or Tanh squash values between a limited range, causing gradients to shrink as they pass through multiple layers. As a result, earlier layers learn very slowly, making training inefficient.
+The vanishing gradient problem occurs when gradients become too small during backpropagation, especially in deep networks.This leads to extremely slow learning in the earlier layers of the network because the weights get very small updates.  This happens because activation functions like Sigmoid or Tanh squash values between a limited range, causing gradients to shrink as they pass through multiple layers. As a result, earlier layers learn very slowly, making training inefficient.
 
 Solution: use RelU or Leaky Relu
 Batch normalization
