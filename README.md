@@ -17,7 +17,7 @@ Multi layer perceptron consists of multiple perceptron in layers with ability to
 ### What is the purpose of an activation function
 It introduces non linearity to learn complex patterns
 Sigmoid: Used for probabilities, but suffers from vanishing gradient
-https://www.researchgate.net/publication/350103066/figure/fig1/AS:1002064838684673@1615922283491/Sigmoid-graph-Source.png
+
 TanH: Used in hidden layers, zero-centered
 Relu
 Leaky Relu
