@@ -1,7 +1,10 @@
 # Deep-Learning
 
 ### What are the main components of a neural network?
-Inout Layer
+It is a densely packed network of neurons where input is passed through input layer and hidden layer to predict outcome.
+Weights and biases gets updated using backpropogation to minimize the loss function
+
+Input Layer
 Hidden Layer
 Output Layer
 Weights & biases
