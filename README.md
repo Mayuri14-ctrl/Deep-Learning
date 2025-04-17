@@ -25,7 +25,7 @@ Softmax: Used in multi-class classification
 
 
 ### Why do we prefer ReLU over Sigmoid and Tanh?
-To avoid vanishing gradient problem
+To avoid vanishing gradient problem. ReLU is computationally efficient and unlike Sigmoid/TanH, its derivative it either 0 or 1 , hence it does not saturate for very large positive values and encourages sparse(most of the elements in a matrix is 0) activation
 
 ### What is backpropagation?
 Backpropagation is used to train a neural network by minimizing the loss function. During forward propagation, data flows from the input to the output layer, making predictions using initial random weights and biases. The loss is then calculated by comparing predictions with actual values. Using the chain rule, the gradient of the loss is computed, and the error propagates backward layer by layer. Weights are updated using gradient descent to minimize the error. This process repeats until the model converges
@@ -33,9 +33,11 @@ Backpropagation is used to train a neural network by minimizing the loss functio
 ### What is the vanishing gradient problem?
 The vanishing gradient problem occurs when gradients become too small during backpropagation, especially in deep networks.This leads to extremely slow learning in the earlier layers of the network because the weights get very small updates.  This happens because activation functions like Sigmoid or Tanh squash values between a limited range, causing gradients to shrink as they pass through multiple layers. As a result, earlier layers learn very slowly, making training inefficient.
 
-Solution: use RelU or Leaky Relu
-Batch normalization
-Use Residual Connections (Skip Connections) in deep networks.
+Solution: 
+-use RelU or Leaky Relu
+-Batch normalization
+-Use Residual Connections (Skip Connections) in deep networks.
+
 ### Optimization Techniques
 ### What is gradient descent?
 Gradient Descent is an optimization algorithm used to minimize the loss function. It updated the weights in the direction of negative gradient
